@@ -1,0 +1,28 @@
+paths:
+  raw_data: "data/raw/diabetic_data.csv"
+  processed_data_dir: "data/processed/"
+  train_data: "data/processed/train.csv"
+  val_data: "data/processed/val.csv"
+  test_data: "data/processed/test.csv"
+  model_save_path: "results/saved_model/best_model"
+  metrics_save_path: "results/metrics.json"
+  plot_save_dir: "results/plots/"
+  db_path: "data/database.db" # Optional for SQL demo
+
+preprocessing:
+  test_size: 0.2
+  validation_size: 0.2 # Proportion of the initial training set
+  random_state: 42
+  drop_cols: ['encounter_id', 'patient_nbr', 'weight', 'payer_code', 'medical_specialty']
+  # Simplified feature engineering for demo - more could be done
+  numeric_cols: ['time_in_hospital', 'num_lab_procedures', 'num_procedures', 'num_medications', 'number_outpatient', 'number_emergency', 'number_inpatient', 'number_diagnoses']
+  # Note: Many categorical cols exist, incl. diagnoses & meds. OHE will create many features.
+  target_col: 'readmitted'
+  target_map: {'<30': 1, '>30': 0, 'NO': 0} # Binary classification: 1 if readmitted <30 days
+
+model:
+  learning_rate: 0.001
+  epochs: 50 # Increased epochs, use EarlyStopping
+  batch_size: 128
+  dropout_rate: 0.3
+  early_stopping_patience: 10
