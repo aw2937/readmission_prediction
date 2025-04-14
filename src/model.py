@@ -23,8 +23,6 @@ def build_nn_model(input_shape: Tuple[int], dropout_rate: float = 0.3, output_bi
 
     keras_bias_initializer = None # Default initializer if no bias is provided
     if output_bias is not None:
-        # --- FIX IS HERE ---
-        # 1. Log the value directly from the numpy array BEFORE creating the initializer
         #    Access the scalar value if it's a single-element array
         bias_value_to_log = output_bias[0] if isinstance(output_bias, np.ndarray) and output_bias.size == 1 else output_bias
         try:
@@ -32,9 +30,7 @@ def build_nn_model(input_shape: Tuple[int], dropout_rate: float = 0.3, output_bi
         except TypeError: # Handle cases where formatting might fail
              logging.info(f"Using initial output bias value: {bias_value_to_log}")
 
-        # 2. Create the Keras initializer object using the passed numpy value
         keras_bias_initializer = tf.keras.initializers.Constant(output_bias)
-        # --- END FIX ---
 
     model = keras.Sequential(
         [
