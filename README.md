@@ -4,7 +4,7 @@ This project demonstrates an end-to-end machine learning workflow for predicting
 
 **Goal:** Predict whether a patient is likely to be readmitted to the hospital within 30 days based on their demographic and clinical encounter data.
 
-**Dataset:** [Diabetes 130-US hospitals for years 1999-2008 Data Set](https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospitals+for+years+1999-2008) from the UCI Machine Learning Repository. Please download `diabetic_data.csv` and place it in the `data/raw/` directory.
+**Dataset:** [Diabetes 130-US hospitals for years 1999-2008 Data Set](https://archive.ics.uci.edu/ml/datasets/Diabetes+130-US+hospitals+for+years+1999-2008) from the UCI. Please download `diabetic_data.csv` and place it in the `data/raw/` directory.
 
 
 ## Setup
